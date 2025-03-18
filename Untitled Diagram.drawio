@@ -199,6 +199,98 @@
             <mxPoint x="1449.5" y="550" as="targetPoint" />
           </mxGeometry>
         </mxCell>
+        <mxCell id="bJA0hyxQSDtkD8YtruUl-49" value="Update cleaning_status with error" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1385" y="550" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bJA0hyxQSDtkD8YtruUl-50" value="Dump into silver lake" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1550" y="430" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bJA0hyxQSDtkD8YtruUl-52" value="" style="rounded=0;html=1;jettySize=auto;orthogonalLoop=1;fontSize=11;endArrow=block;endFill=0;endSize=8;strokeWidth=1;shadow=0;labelBackgroundColor=none;edgeStyle=orthogonalEdgeStyle;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1680" y="449.5" as="sourcePoint" />
+            <mxPoint x="1720" y="450" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bJA0hyxQSDtkD8YtruUl-53" value="Update cleaning_status with success" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1720" y="430" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bJA0hyxQSDtkD8YtruUl-54" value="" style="rounded=0;html=1;jettySize=auto;orthogonalLoop=1;fontSize=11;endArrow=block;endFill=0;endSize=8;strokeWidth=1;shadow=0;labelBackgroundColor=none;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="bJA0hyxQSDtkD8YtruUl-55">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="675" y="780" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bJA0hyxQSDtkD8YtruUl-55" value="Read all cleaning_status from CosmosDB" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="615" y="690" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bJA0hyxQSDtkD8YtruUl-56" value="has &lt;br&gt;item_code?" style="rhombus;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=12;align=center;strokeWidth=1;spacing=6;spacingTop=-4;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="625" y="780" width="100" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="bJA0hyxQSDtkD8YtruUl-57" value="Yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;jettySize=auto;orthogonalLoop=1;fontSize=11;endArrow=block;endFill=0;endSize=8;strokeWidth=1;shadow=0;labelBackgroundColor=none;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="725" y="819.5" as="sourcePoint" />
+            <mxPoint x="775" y="819.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bJA0hyxQSDtkD8YtruUl-58" value="No" style="rounded=0;html=1;jettySize=auto;orthogonalLoop=1;fontSize=11;endArrow=block;endFill=0;endSize=8;strokeWidth=1;shadow=0;labelBackgroundColor=none;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="0.3333" y="20" relative="1" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="674.5" y="860" as="sourcePoint" />
+            <mxPoint x="674.5" y="920" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bJA0hyxQSDtkD8YtruUl-59" value="Item Code Match&lt;br&gt;Script" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="615" y="920" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bJA0hyxQSDtkD8YtruUl-60" value="Item Code Match" style="rhombus;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=12;align=center;strokeWidth=1;spacing=6;spacingTop=-4;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="625" y="1020" width="100" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="bJA0hyxQSDtkD8YtruUl-61" value="Yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;jettySize=auto;orthogonalLoop=1;fontSize=11;endArrow=block;endFill=0;endSize=8;strokeWidth=1;shadow=0;labelBackgroundColor=none;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="725" y="1059.5" as="sourcePoint" />
+            <mxPoint x="775" y="1059.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bJA0hyxQSDtkD8YtruUl-62" value="No" style="rounded=0;html=1;jettySize=auto;orthogonalLoop=1;fontSize=11;endArrow=block;endFill=0;endSize=8;strokeWidth=1;shadow=0;labelBackgroundColor=none;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="0.3333" y="20" relative="1" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="674.5" y="1100" as="sourcePoint" />
+            <mxPoint x="674.5" y="1160" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bJA0hyxQSDtkD8YtruUl-63" value="fuzzy match item_codes" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="610" y="1160" width="130" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="bJA0hyxQSDtkD8YtruUl-64" value="backfill data via Item Code" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="775" y="1030" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="bJA0hyxQSDtkD8YtruUl-65" value="Good to go" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="775" y="800" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bJA0hyxQSDtkD8YtruUl-66" value="" style="rounded=0;html=1;jettySize=auto;orthogonalLoop=1;fontSize=11;endArrow=block;endFill=0;endSize=8;strokeWidth=1;shadow=0;labelBackgroundColor=none;edgeStyle=orthogonalEdgeStyle;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="674.5" y="960" as="sourcePoint" />
+            <mxPoint x="675" y="1020" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bJA0hyxQSDtkD8YtruUl-67" value="" style="rounded=0;html=1;jettySize=auto;orthogonalLoop=1;fontSize=11;endArrow=block;endFill=0;endSize=8;strokeWidth=1;shadow=0;labelBackgroundColor=none;edgeStyle=orthogonalEdgeStyle;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="674.5" y="1220" as="sourcePoint" />
+            <mxPoint x="675" y="1280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bJA0hyxQSDtkD8YtruUl-70" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="bJA0hyxQSDtkD8YtruUl-68" target="bJA0hyxQSDtkD8YtruUl-60">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="530" y="1310" />
+              <mxPoint x="530" y="1060" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bJA0hyxQSDtkD8YtruUl-68" value="upload to cosmosDB&lt;div&gt;via pkType: item_code_match&lt;/div&gt;&lt;div&gt;item_code_match = False&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="610" y="1280" width="160" height="100" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
