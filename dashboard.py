@@ -19,7 +19,7 @@ st.markdown("### Analyze construction project costs by type, year, and categorie
 @st.cache_data
 def load_data():
     try:
-        df = pd.read_csv('dashboard_data/numerically_cleaned.csv', index_col=False)
+        df = pd.read_csv('numerically_cleaned.csv', index_col=False)
         df = df.iloc[:,1:]
         return df
     except FileNotFoundError:
