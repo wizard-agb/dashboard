@@ -40,20 +40,42 @@ with col_logo:
 # Sidebar filters
 with st.sidebar:
     st.header("Filters")
-    selected_project = st.multiselect("Project Id", options=data['project_id'].unique())
+    selected_project = st.multiselect("Project Category", options=data['project_category'].unique())
     selected_category = st.multiselect("Construction Category", options=data['construction_category'].dropna().unique())
 
 # Apply filters
 filtered_data = data.copy()
 if selected_project:
-    filtered_data = filtered_data[filtered_data['project_id'].isin(selected_project)]
+    filtered_data = filtered_data[filtered_data['project_category'].isin(selected_project)]
 if selected_category:
     filtered_data = filtered_data[filtered_data['construction_category'].isin(selected_category)]
 
+st.markdown("---")
 # Summary statistics
 st.subheader("Summary")
-st.metric("Total Cost", f"${filtered_data['total_mat_lab_equip'].sum():,.2f}")
-st.metric("# of Items", f"{len(filtered_data):,}")
+col_summary1, col_summary2, col_summary3 = st.columns(3)
+
+# Format total cost to shorthand (e.g. 22M)
+def format_shorthand(value):
+    if value >= 1_000_000_000:
+        return f"${value/1_000_000_000:.1f}B"
+    elif value >= 1_000_000:
+        return f"${value/1_000_000:.1f}M"
+    elif value >= 1_000:
+        return f"${value/1_000:.1f}K"
+    else:
+        return f"${value:.0f}"
+
+total_cost = filtered_data['total_mat_lab_equip'].sum()
+with col_summary1:
+    st.markdown(f"<div style='text-align: center;'><h5>Total Cost</h5><h3>{format_shorthand(total_cost)}</h3></div>", unsafe_allow_html=True)
+with col_summary2:
+    st.markdown(f"<div style='text-align: center;'><h5># of Projects</h5><h3>{len(filtered_data.source_file_name.unique()):,}</h3></div>", unsafe_allow_html=True)
+with col_summary3:
+    st.markdown(f"<div style='text-align: center;'><h5># of Items</h5><h3>{len(filtered_data):,}</h3></div>", unsafe_allow_html=True)
+
+# markedown separator line 
+st.markdown("---")
 
 # ----- Section 1: Projects by Sum of Cost -----
 st.subheader("Projects by Sum of Cost")
@@ -87,6 +109,15 @@ with col2:
                   color_discrete_sequence=custom_colors)
     st.plotly_chart(fig2, use_container_width=True)
 
+# Total cost per source file
+cost_by_file = filtered_data.groupby('source_file_name')['total_mat_lab_equip'].sum().reset_index()
+fig5 = px.pie(cost_by_file, values='total_mat_lab_equip', names='source_file_name',
+              title="Cost Distribution by Source File",
+              color_discrete_sequence=custom_colors)
+fig5.update_traces(textinfo='none')
+st.plotly_chart(fig5, use_container_width=True)
+
+st.markdown("---")
 # ----- Section 2: Count of Line Items by Categories -----
 st.subheader("Count of Line Items by Categories")
 col3, col4 = st.columns(2)
@@ -107,14 +138,8 @@ with col4:
                  color_discrete_sequence=custom_colors)
     st.plotly_chart(fig4, use_container_width=True)
 
-# Total cost per source file
-cost_by_file = filtered_data.groupby('source_file_name')['total_mat_lab_equip'].sum().reset_index()
-fig5 = px.pie(cost_by_file, values='total_mat_lab_equip', names='source_file_name',
-              title="Cost Distribution by Source File",
-              color_discrete_sequence=custom_colors)
-fig5.update_traces(textinfo='none')
-st.plotly_chart(fig5, use_container_width=True)
 
+st.markdown("---")
 # ----- Section 3: Cost vs. Line Item Count -----
 st.subheader("Cost vs. Line Item Count")
 
@@ -146,6 +171,7 @@ with col6:
                      color_discrete_sequence=custom_colors)
     st.plotly_chart(fig, use_container_width=True)
 
-# Table preview
+# Table preview in expandable section
 st.subheader("Data Preview")
-st.dataframe(filtered_data.head(50))
+with st.expander("🔍 View Raw Data Table"):
+    st.dataframe(filtered_data.head(50))
