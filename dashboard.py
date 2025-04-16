@@ -91,7 +91,7 @@ with col1:
     )
     fig1 = px.bar(grouped_by_category, x='construction_category', y='total_mat_lab_equip',
                   title="Total Cost by Construction Category",
-                  labels={'total_mat_lab_equip': 'Total Cost', 'construction_category': 'Category'},
+                  labels={'total_mat_lab_equip': 'Total Cost', 'construction_category': 'Construction Category'},
                   color_discrete_sequence=custom_colors)
     st.plotly_chart(fig1, use_container_width=True)
 
@@ -133,6 +133,10 @@ with col3:
     fig3 = px.bar(count_by_construction_category, x='construction_category', y='count',
                  title="Line Item Count by Construction Category",
                  color_discrete_sequence=custom_colors)
+    fig3.update_layout(
+        yaxis_title="Line Item Count",
+        xaxis_title="Construction Category"
+    )
     st.plotly_chart(fig3, use_container_width=True)
 
 with col4:
@@ -141,6 +145,10 @@ with col4:
     fig4 = px.bar(count_by_project_category, x='project_category', y='count',
                  title="Line Item Count by Project Category",
                  color_discrete_sequence=custom_colors)
+    fig4.update_layout(
+        yaxis_title="Line Item Count",
+        xaxis_title="Project Category"
+    )
     st.plotly_chart(fig4, use_container_width=True)
 
 
@@ -157,10 +165,14 @@ col5, col6 = st.columns(2)
 
 with col5:
     filtered_data_outliers_1 = filtered_data[filtered_data['total_mat_lab_equip'] < 10000000]
-    fig = px.histogram(filtered_data_outliers_1, x="total_mat_lab_equip", nbins=20, 
+    fig = px.histogram(filtered_data_outliers_1, x="total_mat_lab_equip", nbins=15, 
                        color_discrete_sequence=custom_colors, 
                        title="Cost Distribution",
-                       labels={"total_mat_lab_equip": "Total Cost ($)"})
+                       labels={"total_mat_lab_equip": "Line Item Cost ($)", "count": "Line Item Count"})
+    fig.update_layout(
+        yaxis_title="Line Item Count",
+        xaxis_title="Total Cost ($)"
+    )
     st.plotly_chart(fig, use_container_width=True)
 
 with col6:
