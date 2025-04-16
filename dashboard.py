@@ -128,14 +128,16 @@ st.subheader("Count of Line Items by Categories")
 col3, col4 = st.columns(2)
 
 with col3:
-    count_by_construction_category = filtered_data['construction_category'].value_counts().reset_index()
-    count_by_construction_category.columns = ['construction_category', 'count']
-    fig3 = px.bar(count_by_construction_category, x='construction_category', y='count',
-                 title="Line Item Count by Construction Category",
+    avg_df = filtered_data.groupby(['project_category', 'file_name'])['total_mat_lab_equip'].count().reset_index()
+    avg_df = avg_df.groupby('project_category')['total_mat_lab_equip'].mean().reset_index()
+    avg_df.columns = ['project_category', 'avg_line_item_count']
+    avg_df = avg_df.sort_values(by='avg_line_item_count', ascending=False)
+    fig3 = px.bar(avg_df, x='project_category', y='avg_line_item_count',
+                 title="Avg Line Item Count by Construction Category",
                  color_discrete_sequence=custom_colors)
     fig3.update_layout(
-        yaxis_title="Line Item Count",
-        xaxis_title="Construction Category"
+        yaxis_title="Avg Line Item Count",
+        xaxis_title="Project Category"
     )
     st.plotly_chart(fig3, use_container_width=True)
 
