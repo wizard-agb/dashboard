@@ -110,12 +110,17 @@ with col2:
     st.plotly_chart(fig2, use_container_width=True)
 
 # Total cost per source file
-cost_by_file = filtered_data.groupby('source_file_name')['total_mat_lab_equip'].sum().reset_index()
-fig5 = px.pie(cost_by_file, values='total_mat_lab_equip', names='source_file_name',
-              title="Cost Distribution by Source File",
-              color_discrete_sequence=custom_colors)
-fig5.update_traces(textinfo='none')
-st.plotly_chart(fig5, use_container_width=True)
+
+st.subheader("Histogram: Total Cost by Project")
+cost_by_file_hist = filtered_data.groupby('file_name')['total_mat_lab_equip'].sum().reset_index()
+fig_hist_source = px.histogram(cost_by_file_hist, x='total_mat_lab_equip',
+                            histnorm=None,
+                            range_x=[0, cost_by_file_hist['total_mat_lab_equip'].max()],
+                            labels={'total_mat_lab_equip': 'Total Cost'},
+                            color_discrete_sequence=custom_colors)
+fig_hist_source.update_xaxes(rangebreaks=[dict(bounds=[0, 1])])
+st.plotly_chart(fig_hist_source, use_container_width=True)
+
 
 st.markdown("---")
 # ----- Section 2: Count of Line Items by Categories -----
