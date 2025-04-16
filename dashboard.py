@@ -156,13 +156,14 @@ cost_vs_count = filtered_data.groupby('project_id').agg(
 col5, col6 = st.columns(2)
 
 with col5:
-    st.subheader("Cost Distribution")
     filtered_data_outliers_1 = filtered_data[filtered_data['total_mat_lab_equip'] < 10000000]
-    fig = px.histogram(filtered_data_outliers_1, x="total_mat_lab_equip", nbins=20, color_discrete_sequence=custom_colors, labels={"total_mat_lab_equip": "Total Cost ($)"})
+    fig = px.histogram(filtered_data_outliers_1, x="total_mat_lab_equip", nbins=20, 
+                       color_discrete_sequence=custom_colors, 
+                       title="Cost Distribution",
+                       labels={"total_mat_lab_equip": "Total Cost ($)"})
     st.plotly_chart(fig, use_container_width=True)
 
 with col6:
-    st.subheader("Line Items Cost Scatter")
     # remove top 10 outliers
     filtered_data_outliers = filtered_data[filtered_data['total_mat_lab_equip'] < 1000000000]
     df_grouped = filtered_data_outliers.groupby("source_file_name").agg(
