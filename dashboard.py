@@ -21,7 +21,7 @@ custom_colors = ['#0c2340', '#e07c00', '#7c7c7c', '#b2b2b2', '#cccccc']
 # Set page configuration
 st.set_page_config(
     page_title="Construction Check Dashboard",
-    page_icon="🏗️",
+    page_icon="https://cdn.prod.website-files.com/63b68119ba1a9f43948a602f/6603f8f3151d0ac28befd166_Construction-Check_Logo_Horiz_TaglineR_CMYK-p-500.png",
     layout="wide"
 )
 
@@ -111,7 +111,7 @@ with col2:
 
 # Total cost per source file
 
-st.subheader("Histogram: Total Cost by Project")
+st.subheader("Total Cost by Project")
 cost_by_file_hist = filtered_data.groupby('file_name')['total_mat_lab_equip'].sum().reset_index()
 fig_hist_source = px.histogram(cost_by_file_hist, x='total_mat_lab_equip',
                             histnorm=None,
@@ -127,13 +127,13 @@ st.markdown("---")
 st.subheader("Count of Line Items by Categories")
 col3, col4 = st.columns(2)
 
-with col3:
+with col4:
     avg_df = filtered_data.groupby(['project_category', 'file_name'])['total_mat_lab_equip'].count().reset_index()
     avg_df = avg_df.groupby('project_category')['total_mat_lab_equip'].mean().reset_index()
     avg_df.columns = ['project_category', 'avg_line_item_count']
     avg_df = avg_df.sort_values(by='avg_line_item_count', ascending=False)
     fig3 = px.bar(avg_df, x='project_category', y='avg_line_item_count',
-                 title="Avg Line Item Count by Construction Category",
+                 title="Avg Line Item Count by Project Category",
                  color_discrete_sequence=custom_colors)
     fig3.update_layout(
         yaxis_title="Avg Line Item Count",
@@ -141,7 +141,7 @@ with col3:
     )
     st.plotly_chart(fig3, use_container_width=True)
 
-with col4:
+with col3:
     count_by_project_category = filtered_data['project_category'].value_counts().reset_index()
     count_by_project_category.columns = ['project_category', 'count']
     fig4 = px.bar(count_by_project_category, x='project_category', y='count',
@@ -187,7 +187,7 @@ with col6:
 
     fig = px.scatter(df_grouped, x="line_items", y="total_mat_lab_equip", 
                      title="Project Cost vs Line Item Count",
-                     labels={"line_items": "Line Item Count", "total_mat_lab_equip": "Total Cost ($)"},
+                     labels={"line_items": "Plot Index", "total_mat_lab_equip": "Total Cost ($)"},
                      color_discrete_sequence=custom_colors)
     st.plotly_chart(fig, use_container_width=True)
 
